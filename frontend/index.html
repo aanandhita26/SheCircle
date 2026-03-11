@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SheCircle - Safe Space for Women</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-circle-notch"></i> SheCircle
+        </div>
+        <div class="nav-links">
+            <a href="#" onclick="showPage('home-page')">Home</a>
+            <a href="#" onclick="showPage('circles-page')">Circles</a>
+            <a href="#" onclick="showPage('meetups-page')">Meetups</a>
+            <a href="#" onclick="showPage('wall-page')">Anonymous Wall</a>
+            <a href="#" onclick="showPage('chatbot-page')">Chatbot</a>
+            <a href="#" onclick="showPage('profile-page')">Profile</a>
+        </div>
+    </nav>
+
+    <main id="app-content">
+        <!-- Pages will be injected/toggled via JS here -->
+        <section id="home-page" class="page-section active">
+            <div class="hero-section">
+                <h1>Welcome to SheCircle</h1>
+                <p>A safe, warm place where you can relax, share your thoughts, and connect with other women reducing invisible mental load.</p>
+                <button class="btn-primary" onclick="showPage('circles-page')">Join a Circle</button>
+            </div>
+            <h2>Your Dashboard</h2>
+            <div class="dashboard-grid cards-container">
+                <div class="card">
+                    <h3>Recommended Circles</h3>
+                    <p>Based on your profile, we think you'd love these.</p>
+                    <button class="btn-primary" style="margin-top: 10px;" onclick="showPage('circles-page')">View</button>
+                </div>
+                <div class="card">
+                    <h3>Upcoming Meetups</h3>
+                    <p>You have 1 meetup scheduled this week.</p>
+                    <button class="btn-primary" style="margin-top: 10px;" onclick="showPage('meetups-page')">View</button>
+                </div>
+                <div class="card">
+                    <h3>AI Support</h3>
+                    <p>Need to vent? Our emotional support bot is here.</p>
+                    <button class="btn-primary" style="margin-top: 10px;" onclick="showPage('chatbot-page')">Chat Now</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="circles-page" class="page-section" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2>Community Support Circles</h2>
+                <button class="btn-primary"><i class="fa-solid fa-plus"></i> Create Circle</button>
+            </div>
+            <div class="cards-container" id="circles-container">
+                <!-- Mocked Circles -->
+                <div class="card">
+                    <h3>Mindful Mothers</h3>
+                    <p><i class="fa-solid fa-location-dot" style="color: var(--primary-rose)"></i> New York, NY (1.5 mi away)</p>
+                    <p style="font-size: 0.9em; margin-top: 10px;">A group for new mothers navigating the challenges of balancing work and home life.</p>
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <button class="btn-primary" style="font-size: 0.9em; padding: 6px 12px;">Join</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Weekend Walkers</h3>
+                    <p><i class="fa-solid fa-location-dot" style="color: var(--primary-rose)"></i> Central Park</p>
+                    <p style="font-size: 0.9em; margin-top: 10px;">Casual strolls every Saturday morning to destress and chat.</p>
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <button class="btn-primary" style="font-size: 0.9em; padding: 6px 12px;">Join</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="meetups-page" class="page-section" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2>Local Meetups</h2>
+                <button class="btn-primary"><i class="fa-solid fa-plus"></i> Organize</button>
+            </div>
+            <div class="cards-container" id="meetups-container">
+                <div class="card">
+                    <h3>Coffee & Conversations</h3>
+                    <p><strong><i class="fa-regular fa-clock" style="color: var(--primary-rose)"></i> Tomorrow, 10:00 AM</strong></p>
+                    <p><i class="fa-solid fa-location-dot" style="color: var(--primary-rose)"></i> The Daily Grind Cafe</p>
+                    <p style="font-size: 0.9em; margin-top: 10px;">Open forum to discuss the unseen mental load over lattes.</p>
+                    <button class="btn-primary" style="margin-top: 15px; width: 100%; justify-content: center;">RSVP (3/8 spots)</button>
+                </div>
+            </div>
+            <!-- Mocked Map Container -->
+            <div class="map-container" style="margin-top: 2rem; width: 100%; height: 300px; background-color: #eee; border-radius: 14px; display: flex; justify-content: center; align-items: center; color: var(--text-grey);">
+                <p><i class="fa-solid fa-map-location-dot" style="font-size: 2em; margin-bottom: 10px; display: block; text-align: center;"></i> Map View Integration (Google Maps / Mapbox)</p>
+            </div>
+        </section>
+
+        <section id="wall-page" class="page-section" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2>Anonymous Sharing Wall</h2>
+                <button class="btn-primary"><i class="fa-solid fa-pen"></i> Share Thought</button>
+            </div>
+            <div class="cards-container" id="posts-container">
+                <div class="card">
+                    <p style="font-size: 1.1em; font-style: italic;">"Sometimes I feel overwhelmed managing everything at home while everyone thinks I have it all together."</p>
+                    <p style="font-size: 0.8em; align-items: right; text-align: right; margin-top: 15px;">— Anonymous, 2 hours ago</p>
+                    <div style="margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px; display: flex; gap: 15px; color: var(--primary-rose);">
+                        <span style="cursor: pointer;"><i class="fa-solid fa-heart"></i> Support (12)</span>
+                        <span style="cursor: pointer;"><i class="fa-solid fa-hands-holding-child"></i> Empathy (8)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="chatbot-page" class="page-section" style="display: none;">
+            <h2>AI Emotional Support</h2>
+            <div class="chat-container">
+                <div class="chat-history" id="ai-chat-history"></div>
+                <div class="chat-input-area">
+                    <input type="text" id="ai-chat-input" placeholder="How are you feeling today?">
+                    <button class="btn-primary" onclick="window.sendAIMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="profile-page" class="page-section" style="display: none;">
+            <h2>Your Profile</h2>
+        </section>
+
+    </main>
+
+    <!-- Main JS -->
+    <script src="js/app.js"></script>
+</body>
+</html>

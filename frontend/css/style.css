@@ -1,0 +1,179 @@
+/* Design System - SheCircle Palette */
+:root {
+    --primary-rose: #F8C8DC;
+    --blush-pink: #FADADD;
+    --lavender: #E6D9FF;
+    --bg-cream: #FFF9FB;
+    --peach-accent: #FFD6CC;
+    --text-grey: #5F5F5F;
+    --text-dark: #333333;
+    
+    --font-heading: 'Poppins', 'Nunito', sans-serif;
+    --font-body: 'Inter', 'Open Sans', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    background-color: var(--bg-cream);
+    color: var(--text-grey);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--text-dark);
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white;
+    box-shadow: 0px 4px 14px rgba(0,0,0,0.04);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.logo i {
+    color: var(--primary-rose);
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-grey);
+    margin: 0 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-rose);
+}
+
+/* Main Content */
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-section {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: linear-gradient(135deg, var(--blush-pink), var(--lavender));
+    border-radius: 14px;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-section p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+}
+
+/* Base Card Elements */
+.card {
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0px 4px 14px rgba(0,0,0,0.06);
+    padding: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.08);
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--primary-rose);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary:hover {
+    background: #F3AFC8; /* slightly darker rose */
+}
+
+/* Chat Container */
+.chat-container {
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0px 4px 14px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    overflow: hidden;
+}
+
+.chat-history {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: var(--bg-cream);
+}
+
+.chat-input-area {
+    padding: 16px;
+    background: white;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border-top: 1px solid #eee;
+}
+
+.chat-input-area input {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-family: var(--font-body);
+}
+
+.chat-input-area input:focus {
+    border-color: var(--primary-rose);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+}
+
