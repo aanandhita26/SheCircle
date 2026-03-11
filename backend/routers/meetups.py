@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 from datetime import datetime
 import models
 from database import get_db
@@ -16,6 +16,7 @@ class MeetupCreate(BaseModel):
     location: str
     circle_id: int
     creator_id: int
+    special_guest: Optional[str] = None
 
 @router.get("/")
 def get_all_meetups(db: Session = Depends(get_db)):
@@ -27,10 +28,18 @@ def get_circle_meetups(circle_id: int, db: Session = Depends(get_db)):
 
 @router.post("/")
 def create_meetup(meetup: MeetupCreate, db: Session = Depends(get_db)):
-    # Verify circle exists
+    # Verify or auto-create demo circle and user
     circle = db.query(models.Circle).filter_by(id=meetup.circle_id).first()
     if not circle:
-        raise HTTPException(status_code=404, detail="Circle not found")
+        user = db.query(models.User).filter_by(id=meetup.creator_id).first()
+        if not user:
+            user = models.User(id=meetup.creator_id, name="Demo User", email="demo@example.com", hashed_password="pw")
+            db.add(user)
+            db.commit()
+            
+        circle = models.Circle(id=meetup.circle_id, name="Demo Circle", description="Auto-created for demo", creator_id=user.id)
+        db.add(circle)
+        db.commit()
 
     new_meetup = models.Meetup(
         title=meetup.title,
@@ -39,7 +48,8 @@ def create_meetup(meetup: MeetupCreate, db: Session = Depends(get_db)):
         activity_type=meetup.activity_type,
         location=meetup.location,
         circle_id=meetup.circle_id,
-        creator_id=meetup.creator_id
+        creator_id=meetup.creator_id,
+        special_guest=meetup.special_guest
     )
     db.add(new_meetup)
     db.commit()

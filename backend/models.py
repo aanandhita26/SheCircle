@@ -58,6 +58,7 @@ class Meetup(Base):
     activity_type = Column(String)
     location = Column(String)
     creator_id = Column(Integer, ForeignKey("users.id"))
+    special_guest = Column(String, nullable=True)
 
     circle = relationship("Circle", back_populates="meetups")
     participants = relationship("MeetupParticipant", back_populates="meetup")
